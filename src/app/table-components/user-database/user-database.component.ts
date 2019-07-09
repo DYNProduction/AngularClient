@@ -31,6 +31,7 @@ export class UserDatabaseComponent implements OnInit  {
 
   addUser(){
     const modelRef=this.modalService.open(ModalUserComponent, { backdrop: "static", centered: true , keyboard:false});
+
     modelRef.result.then(result=>{
       if (result instanceof User){
         this.submit(result);
@@ -43,6 +44,7 @@ export class UserDatabaseComponent implements OnInit  {
 
   editUser(user : User){
     this.modelRef=this.modalService.open(ModalUserComponent, { centered: true , keyboard:false});
+
     this.modelRef.componentInstance.editUser = user;
   }
 
