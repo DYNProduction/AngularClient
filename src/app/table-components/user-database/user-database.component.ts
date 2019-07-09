@@ -33,7 +33,7 @@ export class UserDatabaseComponent extends EntittyRequest<User>{
   addUser(){
     const modelRef=this.modalService.open(ModalUserComponent, { backdrop: "static", centered: true , keyboard:false});
 
-    this.userRequest(modelRef);
+    this.elementRequest(modelRef);
   }
 
   editUser(user : User){

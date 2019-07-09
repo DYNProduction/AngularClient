@@ -14,7 +14,6 @@ import { BranchComponent } from './table-components/branch/branch.component';
 import { AgentComponent } from './table-components/agent/agent.component';
 import {TableModule} from './table-components/table/table.module';
 import { UserDatabaseComponent } from './table-components/user-database/user-database.component';
-import { NgbdModalOptionsComponent } from './table-components/ngbd-modal-options/ngbd-modal-options.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalUserComponent } from './table-components/user-database/modal-user/modal-user.component';
 import {EntittyRequest} from './table-components/EntittyRequest';
@@ -29,7 +28,6 @@ import {EntittyRequest} from './table-components/EntittyRequest';
     BranchComponent,
     AgentComponent,
     UserDatabaseComponent,
-    NgbdModalOptionsComponent,
     ModalUserComponent,
   ],
 
@@ -45,10 +43,10 @@ import {EntittyRequest} from './table-components/EntittyRequest';
 
   ],
 
-  entryComponents: [NgbdModalOptionsComponent, UserDatabaseComponent, ModalUserComponent, ],
+  entryComponents: [UserDatabaseComponent, ModalUserComponent, ],
 
   providers: [EntittyRequest],
-  bootstrap: [AppComponent, NavMenuComponent, UserDatabaseComponent,NgbdModalOptionsComponent]
+  bootstrap: [AppComponent, NavMenuComponent, UserDatabaseComponent]
 
 })
 export class AppModule {

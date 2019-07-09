@@ -5,7 +5,6 @@ import {BranchComponent} from '../branch/branch.component';
 import {ContractComponent} from '../contract/contract.component';
 import {TariffComponent} from '../tariff/tariff.component';
 import {UserDatabaseComponent} from '../user-database/user-database.component';
-import {NgbdModalOptionsComponent} from '../ngbd-modal-options/ngbd-modal-options.component';
 
 
 const routes: Routes = [

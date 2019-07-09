@@ -14,7 +14,7 @@ export class EntittyRequest<T extends EntityId> implements OnInit{
   constructor(private httpService: HttpService<T>) {
   }
 
-  userRequest(modelRef:NgbModalRef){
+  elementRequest(modelRef:NgbModalRef){
     modelRef.result.then(result=>{
       if (result instanceof Object){
         this.submit(result);
@@ -58,7 +58,9 @@ export class EntittyRequest<T extends EntityId> implements OnInit{
     this.index=0;
 
     while(this.index<this.elements.length) {
-      if (element.id!=this.elements[this.index].id)this.newArray.push(this.elements[this.index]);
+      if (element.id!=this.elements[this.index].id) {
+        this.newArray.push(this.elements[this.index]);
+      }
       this.index++;
     }
 

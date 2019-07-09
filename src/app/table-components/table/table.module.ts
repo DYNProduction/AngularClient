@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { TableRoutingModule } from './table-routing.module';
 import {RouterModule} from '@angular/router';
-import {NgbdModalOptionsComponent} from '../ngbd-modal-options/ngbd-modal-options.component';
 
 @NgModule({
   declarations: [ ],
@@ -12,6 +11,6 @@ import {NgbdModalOptionsComponent} from '../ngbd-modal-options/ngbd-modal-option
     RouterModule,
     TableRoutingModule
   ],
-  entryComponents: [NgbdModalOptionsComponent ]
+  entryComponents: []
 })
 export class TableModule { }
