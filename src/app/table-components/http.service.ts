@@ -25,7 +25,7 @@ export class HttpService<T extends EntityId> {
   }
 
   public deleteData(element: T) {
-    return this.http.delete(this.baseUrl+'/' + String(element.id()));
+    return this.http.delete(this.baseUrl+'/' + String(element.id));
   }
 
   public putData(element: T) {

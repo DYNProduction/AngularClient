@@ -11,62 +11,14 @@
     <th scope="row">{{user.id}}</th>
     <td>{{user.login}}</td>
     <td>{{user.password}}
-      <button type="button" class="buttonMargin btn btn-outline-success buttonUrlBasket" ></button>
-        <button type="button" class="buttonMargin btn btn-outline-success buttonUrlPencil" ></button></td>
+      <button type="button" class="buttonMargin btn btn-outline-success buttonUrlBasket" (click)="delete(user)"></button>
+      <button type="button" class="buttonMargin btn btn-outline-success buttonUrlPencil" (click)="editUser(user)"></button>
+    </td>
   </tr>
   </tbody>
 </table>
 
+<button class="btn btn-outline-primary mb-2 mr-2" style="float: right;" (click)="addUser()">Добавить</button>
 
-<div class="form-group">
-  <label>Логин</label>
-  <input class="form-control" name="login" [(ngModel)]="newUser.login"/>
-</div>
-<div class="form-group">
-  <label>Пароль</label>
-  <input class="form-control" name="password" [(ngModel)]="newUser.password"/>
-</div>
-<div class="form-group">
-  <button class="btn btn-default" (click)="submit(newUser)  ">Отправить</button>
-</div>
-<div *ngIf="done">
-  <div>Получено от сервера:</div>
-  <div>Имя: {{receivedUser.login}}</div>
-  <div>Логин: {{receivedUser.password}}</div>
-</div>
 
-<div class="form-group">
-  <button class="btn btn-default" (click)="delete(newUser)">Удалить</button>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<app-ngbd-modal-options></app-ngbd-modal-options>
-
-<div class="container">
-  <div class="btn-holder">
-    <button type="button" class="buttonMargin btn btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter">Добавить</button>
-    <button type="button" class="buttonMargin btn btn-outline-success">Удалить</button>
-    <button type="button" class="buttonMargin btn btn-outline-success">Редактировать</button>
-  </div>
-</div>
 

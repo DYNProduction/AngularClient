@@ -16,6 +16,7 @@ import {TableModule} from './table-components/table/table.module';
 import { UserDatabaseComponent } from './table-components/user-database/user-database.component';
 import { NgbdModalOptionsComponent } from './table-components/ngbd-modal-options/ngbd-modal-options.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalUserComponent } from './table-components/user-database/modal-user/modal-user.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BranchComponent,
     AgentComponent,
     UserDatabaseComponent,
-    NgbdModalOptionsComponent
+    NgbdModalOptionsComponent,
+    ModalUserComponent
   ],
 
 
@@ -41,7 +43,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule
   ],
 
-  entryComponents: [NgbdModalOptionsComponent, UserDatabaseComponent],
+  entryComponents: [NgbdModalOptionsComponent, UserDatabaseComponent, ModalUserComponent],
 
   providers: [],
   bootstrap: [AppComponent, NavMenuComponent, UserDatabaseComponent,NgbdModalOptionsComponent]
