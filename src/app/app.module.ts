@@ -17,6 +17,7 @@ import { UserDatabaseComponent } from './table-components/user-database/user-dat
 import { NgbdModalOptionsComponent } from './table-components/ngbd-modal-options/ngbd-modal-options.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalUserComponent } from './table-components/user-database/modal-user/modal-user.component';
+import {EntittyRequest} from './table-components/EntittyRequest';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { ModalUserComponent } from './table-components/user-database/modal-user/
     AgentComponent,
     UserDatabaseComponent,
     NgbdModalOptionsComponent,
-    ModalUserComponent
+    ModalUserComponent,
   ],
 
 
@@ -41,11 +42,12 @@ import { ModalUserComponent } from './table-components/user-database/modal-user/
     RouterModule,
     FormsModule,
     HttpClientModule
+
   ],
 
-  entryComponents: [NgbdModalOptionsComponent, UserDatabaseComponent, ModalUserComponent],
+  entryComponents: [NgbdModalOptionsComponent, UserDatabaseComponent, ModalUserComponent, ],
 
-  providers: [],
+  providers: [EntittyRequest],
   bootstrap: [AppComponent, NavMenuComponent, UserDatabaseComponent,NgbdModalOptionsComponent]
 
 })
