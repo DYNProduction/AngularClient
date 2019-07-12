@@ -5,6 +5,7 @@ import {UserService} from './user-database/user.service';
 import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {ModalUserComponent} from './user-database/modal-user/modal-user.component';
 import {HttpService} from './http.service';
+import {element} from 'protractor';
 
 
 export class EntittyRequest<T extends EntityId> implements OnInit{
@@ -25,16 +26,25 @@ export class EntittyRequest<T extends EntityId> implements OnInit{
     });
   }
 
-  ngOnInit() {
+  getAll(){
     this.httpService.getData().subscribe(data => this.elements = <T[]> data,
       error => console.log(error));
   }
 
-  submit(element: T) {
+  ngOnInit() {
+    this.getAll();
+  }
+
+  submit(element: T , oldElement: T = null) {
     this.httpService.postData(element)
       .subscribe(
         (data: T) => {
-          this.elements.push(data);
+          let elementById=this.elements.filter(element=>element.id===data.id);
+
+          if (elementById.length===0) {
+            this.elements.push(data);
+          }
+
         },
         error => console.log(error)
       );

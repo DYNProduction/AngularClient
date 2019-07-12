@@ -1,1 +1,28 @@
-<p>branch works!</p>
+<h1 style="text-align: center;">Список филиалов</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col" *ngFor="let el of columnList">{{el}}</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let element of elements">
+    <th scope="row">{{element.id}}</th>
+    <td>{{element.codeBranch}}</td>
+    <td>{{element.name}}</td>
+    <td>{{element.adress}}</td>
+    <td>{{element.number}}</td>
+    <td>
+      <button type="button" class="buttonMargin btn btn-outline-success buttonUrlBasket" (click)="delete(element)"></button>
+      <button type="button" class="buttonMargin btn btn-outline-success buttonUrlPencil" (click)="editUser(element)"></button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-outline-primary mb-2 mr-2" style="float: right;" (click)="addUser()">Добавить</button>
+
+
+

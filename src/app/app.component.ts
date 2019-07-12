@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-import {User} from './table-components/user-database/user';
-import { HttpService } from './table-components/http.service';
-import { delay } from 'q';
+import { HttpClient } from '@angular/common/http';
+import {url} from 'inspector';
+
 
 @Component({
   selector: 'my-app',

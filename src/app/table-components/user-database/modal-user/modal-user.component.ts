@@ -19,8 +19,6 @@ export class ModalUserComponent {
 
   close (){
     this.modal.close(this.editUser);
-    console.log(this.editUser.login);
-    console.log(this.editUser.password);
   }
 
 }

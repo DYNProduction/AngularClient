@@ -17,6 +17,11 @@ import { UserDatabaseComponent } from './table-components/user-database/user-dat
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalUserComponent } from './table-components/user-database/modal-user/modal-user.component';
 import {EntittyRequest} from './table-components/EntittyRequest';
+import { ModalTariffComponent } from './table-components/tariff/modal-tariff/modal-tariff.component';
+import { ModalAgentComponent } from './table-components/agent/modal-agent/modal-agent.component';
+import { ModalBranchComponent } from './table-components/branch/modal-branch/modal-branch.component';
+import { ModalContractComponent } from './table-components/contract/modal-contract/modal-contract.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -29,6 +34,11 @@ import {EntittyRequest} from './table-components/EntittyRequest';
     AgentComponent,
     UserDatabaseComponent,
     ModalUserComponent,
+    ModalTariffComponent,
+    ModalAgentComponent,
+    ModalBranchComponent,
+    ModalContractComponent,
+    HomeComponent
   ],
 
 
@@ -43,7 +53,14 @@ import {EntittyRequest} from './table-components/EntittyRequest';
 
   ],
 
-  entryComponents: [UserDatabaseComponent, ModalUserComponent, ],
+  entryComponents: [
+    UserDatabaseComponent,
+    ModalUserComponent,
+    ModalTariffComponent,
+    ModalAgentComponent,
+    ModalBranchComponent,
+    ModalContractComponent
+  ],
 
   providers: [EntittyRequest],
   bootstrap: [AppComponent, NavMenuComponent, UserDatabaseComponent]

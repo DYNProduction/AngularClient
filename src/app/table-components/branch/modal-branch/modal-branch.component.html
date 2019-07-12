@@ -1,0 +1,34 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title">Добавление нового филиала</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label>Код филиала</label>
+        <input class="form-control"  [(ngModel)]="editBranch.codeBranch" [ngModelOptions]="{standalone: true}"/>
+      </div>
+      <div class="form-group">
+        <label>Имя филиала</label>
+        <input class="form-control"  [(ngModel)]="editBranch.name" [ngModelOptions]="{standalone: true}" />
+      </div>
+      <div class="form-group">
+        <label>Адрес филиала</label>
+        <input class="form-control" [(ngModel)]="editBranch.adress" [ngModelOptions]="{standalone: true}" />
+      </div>
+      <div class="form-group">
+        <label>Номер телефона филиала</label>
+        <input class="form-control" [(ngModel)]="editBranch.number" [ngModelOptions]="{standalone: true}" />
+      </div>
+
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="close()">Ок</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Закрыть</button>
+  </div>
+</div>

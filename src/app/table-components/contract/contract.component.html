@@ -1,1 +1,31 @@
-<p>contract works!</p>
+<h1 style="text-align: center;">Список контрактов</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col" *ngFor="let el of columnList">{{el}}</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let element of elements">
+    <th scope="row">{{element.id}}</th>
+    <td>{{element.codeContract}}</td>
+    <td>{{element.insuranceType}}</td>
+    <td>{{element.insuranceAmount}}</td>
+    <td>{{element.insuranceDate.toString().substring(0,10)}}</td>
+    <td>{{element.agent.fullName}}</td>
+    <td>{{element.branch.name}}</td>
+    <td>{{element.tariff.tariffRate}}</td>
+    <td>
+      <button type="button" class="buttonMargin btn btn-outline-success buttonUrlBasket" (click)="delete(element)"></button>
+      <button type="button" class="buttonMargin btn btn-outline-success buttonUrlPencil" (click)="editUser(element)"></button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-outline-primary mb-2 mr-2" style="float: right;" (click)="addUser()">Добавить</button>
+
+
+
