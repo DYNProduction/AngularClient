@@ -7,7 +7,7 @@ import {Agent} from '../../model/agent';
   templateUrl: './modal-agent.component.html',
   styleUrls: ['./modal-agent.component.css']
 })
-export class ModalAgentComponent  {
+export class ModalAgentComponent {
 
   @Input()
   editAgent: Agent = new Agent();
@@ -16,7 +16,7 @@ export class ModalAgentComponent  {
               private modal: NgbActiveModal) {
   }
 
-  close (){
+  close() {
     this.modal.close(this.editAgent);
   }
 

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {BranchService} from '../service/branch.service';
-import {EntittyRequest} from '../EntittyRequest';
+import {Component, OnInit} from '@angular/core';
+import {BranchService} from '../../service/branch.service';
+import {EntittyRequest} from '../../model/EntittyRequest';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ModalBranchComponent} from './modal-branch/modal-branch.component';
-import {Branch} from '../model/branch';
+import {ModalBranchComponent} from '../../modals/modal-branch/modal-branch.component';
+import {Branch} from '../../model/branch';
 
 @Component({
   selector: 'app-branch',
@@ -11,8 +11,8 @@ import {Branch} from '../model/branch';
   styleUrls: ['./branch.component.css', '../table.button.css'],
   providers: [BranchService]
 })
-export class BranchComponent extends EntittyRequest<Branch>{
-  columnList : Array<string> =[
+export class BranchComponent extends EntittyRequest<Branch> {
+  columnList: Array<string> = [
     "#",
     "Код филиала",
     "Название филиала",
@@ -25,14 +25,22 @@ export class BranchComponent extends EntittyRequest<Branch>{
     super(agentService);
   }
 
-  addBranch(){
-    const modelRef=this.modalService.open(ModalBranchComponent, { backdrop: "static", centered: true , keyboard:false});
+  addBranch() {
+    const modelRef = this.modalService.open(ModalBranchComponent, {
+      backdrop: "static",
+      centered: true,
+      keyboard: false
+    });
 
     this.elementRequest(modelRef);
   }
 
-  editBranch(element : Branch){
-    const modelRef=this.modalService.open(ModalBranchComponent, {backdrop: "static",  centered: true , keyboard:false});
+  editBranch(element: Branch) {
+    const modelRef = this.modalService.open(ModalBranchComponent, {
+      backdrop: "static",
+      centered: true,
+      keyboard: false
+    });
 
     modelRef.componentInstance.editBranch = Object.assign({}, element);
 

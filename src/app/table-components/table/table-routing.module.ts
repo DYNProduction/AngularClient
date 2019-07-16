@@ -7,10 +7,11 @@ import {TariffComponent} from '../tariff/tariff.component';
 
 
 const routes: Routes = [
-  {path: 'agents', component: AgentComponent},
-  {path: 'branchs', component: BranchComponent},
-  {path: 'contracts', component: ContractComponent},
-  {path: 'tariffs', component: TariffComponent},
+  {path: 'db/agents', component: AgentComponent},
+  {path: 'db/branchs', component: BranchComponent},
+  {path: 'db/contracts', component: ContractComponent},
+  {path: 'db/tariffs', component: TariffComponent},
+  {path: '**',pathMatch: 'full', redirectTo:'db/contracts'}
 ];
 
 @NgModule({

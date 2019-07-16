@@ -3,17 +3,18 @@ import {Agent} from '../../model/agent';
 import {NgbActiveModal, NgbDateAdapter, NgbDateNativeAdapter, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Branch} from '../../model/branch';
 import {Tariff} from '../../model/tariff';
+import {Contract} from "../../model/contract";
 
 @Component({
   selector: 'app-modal-contract',
   templateUrl: './modal-contract.component.html',
   styleUrls: ['./modal-contract.component.css'],
-  providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
+  providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}, Contract]
 })
 export class ModalContractComponent implements OnInit {
 
   @Input()
-  editContract;
+  editContract:Contract=new Contract();
 
 
   @Input()
@@ -31,7 +32,6 @@ export class ModalContractComponent implements OnInit {
 
   constructor(private modalService: NgbModal,
               private modal: NgbActiveModal) {
-    debugger;
   }
 
   close() {

@@ -6,12 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 
-export class NavMenuComponent implements OnInit {
-  menuIsOn:boolean=true;
-
-  constructor() { }
-
-  ngOnInit() {
+export class NavMenuComponent {
+  constructor() {
   }
-
 }

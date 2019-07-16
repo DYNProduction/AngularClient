@@ -8,6 +8,6 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export class AppComponent {
 
-  menuIsOn:boolean=false;
+  menuIsOn: boolean = false;
 }
 

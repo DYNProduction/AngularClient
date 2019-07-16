@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {EntittyRequest} from '../EntittyRequest';
-import {Agent} from '../model/agent';
-import {AgentService} from '../service/agent.service';
+import {Component, OnInit} from '@angular/core';
+import {EntittyRequest} from '../../model/EntittyRequest';
+import {Agent} from '../../model/agent';
+import {AgentService} from '../../service/agent.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ModalAgentComponent} from './modal-agent/modal-agent.component';
+import {ModalAgentComponent} from '../../modals/modal-agent/modal-agent.component';
 
 @Component({
   selector: 'app-agent',
@@ -11,8 +11,9 @@ import {ModalAgentComponent} from './modal-agent/modal-agent.component';
   styleUrls: ['./agent.component.css', '../table.button.css'],
   providers: [AgentService]
 })
-export class AgentComponent extends EntittyRequest<Agent>{
-  columnList : Array<string> =[
+
+export class AgentComponent extends EntittyRequest<Agent> {
+  columnList: Array<string> = [
     "#",
     "ФИО",
     "Адрес",
@@ -24,14 +25,14 @@ export class AgentComponent extends EntittyRequest<Agent>{
     super(agentService);
   }
 
-  addAgent(){
-    const modelRef=this.modalService.open(ModalAgentComponent, { backdrop: "static", centered: true , keyboard:false});
+  addAgent() {
+    const modelRef = this.modalService.open(ModalAgentComponent, {backdrop: "static", centered: true, keyboard: false});
 
     this.elementRequest(modelRef);
   }
 
-  editAgent(element : Agent){
-    const modelRef=this.modalService.open(ModalAgentComponent, { centered: true , keyboard:false});
+  editAgent(element: Agent) {
+    const modelRef = this.modalService.open(ModalAgentComponent, {centered: true, keyboard: false});
 
     modelRef.componentInstance.editAgent = Object.assign({}, element);
 
@@ -39,7 +40,7 @@ export class AgentComponent extends EntittyRequest<Agent>{
   }
 
   delete(element: Agent) {
-    super.delete(element,this.modalService);
+    super.delete(element, this.modalService);
   }
 
 

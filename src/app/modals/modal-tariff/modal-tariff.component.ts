@@ -8,7 +8,7 @@ import {Tariff} from '../../model/tariff';
   styleUrls: ['./modal-tariff.component.css']
 })
 
-export class ModalTariffComponent  {
+export class ModalTariffComponent {
 
   @Input()
   editTariff: Tariff = new Tariff();
@@ -17,7 +17,7 @@ export class ModalTariffComponent  {
               private modal: NgbActiveModal) {
   }
 
-  close (){
+  close() {
     this.modal.close(this.editTariff);
   }
 }

@@ -10,13 +10,13 @@ import {Branch} from '../../model/branch';
 export class ModalBranchComponent {
 
   @Input()
-  editBranch: Branch= new Branch();
+  editBranch: Branch = new Branch();
 
   constructor(private modalService: NgbModal,
               private modal: NgbActiveModal) {
   }
 
-  close (){
+  close() {
     this.modal.close(this.editBranch);
   }
 

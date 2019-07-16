@@ -9,14 +9,16 @@
   </thead>
   <tbody>
   <tr *ngFor="let element of elements; let i=index">
-    <th scope="row">{{i+1}}</th>
+    <th scope="row">{{i + 1}}</th>
     <td>{{element.codeBranch}}</td>
     <td>{{element.name}}</td>
-    <td>{{element.adress}}</td>
+    <td>{{element.address}}</td>
     <td>{{element.number}}</td>
     <td>
-      <button type="button" class="buttonMargin btn btn-outline-success buttonUrlBasket" (click)="delete(element)"></button>
-      <button type="button" class="buttonMargin btn btn-outline-success buttonUrlPencil" (click)="editBranch(element)"></button>
+      <button type="button" class="buttonMargin btn btn-outline-success buttonUrlBasket"
+              (click)="delete(element)"></button>
+      <button type="button" class="buttonMargin btn btn-outline-success buttonUrlPencil"
+              (click)="editBranch(element)"></button>
     </td>
   </tr>
   </tbody>

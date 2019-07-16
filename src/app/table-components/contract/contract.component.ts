@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {AgentService} from '../service/agent.service';
+import {AgentService} from '../../service/agent.service';
 import {NgbDateStruct, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Agent} from '../model/agent';
-import {ContractService} from '../service/contract.service';
-import {EntittyRequest} from '../EntittyRequest';
-import {ModalContractComponent} from './modal-contract/modal-contract.component';
-import {BranchService} from '../service/branch.service';
-import {TariffService} from '../service/tariff.service';
-import {HttpService} from '../http.service';
-import {Contract} from '../model/contract';
-import {Branch} from '../model/branch';
-import {Tariff} from '../model/tariff';
+import {Agent} from '../../model/agent';
+import {ContractService} from '../../service/contract.service';
+import {EntittyRequest} from '../../model/EntittyRequest';
+import {ModalContractComponent} from '../../modals/modal-contract/modal-contract.component';
+import {BranchService} from '../../service/branch.service';
+import {TariffService} from '../../service/tariff.service';
+import {HttpService} from '../../service/http.service';
+import {Contract} from '../../model/contract';
+import {Branch} from '../../model/branch';
+import {Tariff} from '../../model/tariff';
 
 @Component({
   selector: 'app-contract',
@@ -44,28 +44,32 @@ export class ContractComponent extends EntittyRequest<Contract> {
   ngOnInit() {
     this.getAll();
 
-    this.agentService.getData().subscribe(data => this.listAgent = <Agent[]> data,
+    this.agentService.getData().subscribe(data => this.listAgent = <Agent[]>data,
       error => console.log(error));
 
-    this.branchService.getData().subscribe(data => this.listBranchs= <Branch[]> data,
+    this.branchService.getData().subscribe(data => this.listBranchs = <Branch[]>data,
       error => console.log(error));
 
-    this.tariffService.getData().subscribe(data => this.listTariff = <Tariff[]> data,
+    this.tariffService.getData().subscribe(data => this.listTariff = <Tariff[]>data,
       error => console.log(error));
   }
 
-  listAgent:Agent[]=[];
-  listBranchs:Branch[]=[];
-  listTariff:Tariff[]=[];
+  listAgent: Agent[] = [];
+  listBranchs: Branch[] = [];
+  listTariff: Tariff[] = [];
 
-  initialComponent(modelRef:any){
+  initialComponent(modelRef: any) {
     modelRef.componentInstance.listAgent = this.listAgent;
     modelRef.componentInstance.listBranch = this.listBranchs;
     modelRef.componentInstance.listTariff = this.listTariff;
   }
 
   addUser() {
-    const modelRef = this.modalService.open(ModalContractComponent, {backdrop: 'static', centered: true, keyboard: false});
+    const modelRef = this.modalService.open(ModalContractComponent, {
+      backdrop: 'static',
+      centered: true,
+      keyboard: false
+    });
     this.initialComponent(modelRef);
 
     this.elementRequest(modelRef);
@@ -81,6 +85,6 @@ export class ContractComponent extends EntittyRequest<Contract> {
   }
 
   delete(element: Contract) {
-    super.delete(element,this.modalService);
+    super.delete(element, this.modalService);
   }
 }

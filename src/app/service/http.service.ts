@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 // @ts-ignore
-import {EntityId} from "./EntityId.ts";
+import {EntityId} from "../model/EntityId.js";
 import {baseUrl} from '../../environments/environment';
 
 @Injectable()
 export class HttpService<T extends EntityId> {
 
-  private baseUrl:string = baseUrl;
+  private baseUrl: string = baseUrl;
 
-  public setBaseUrl(urlTable:string){
+  public setBaseUrl(urlTable: string) {
     this.baseUrl += urlTable;
   }
 
@@ -25,7 +25,7 @@ export class HttpService<T extends EntityId> {
   }
 
   public deleteData(element: T) {
-    return this.http.delete(this.baseUrl+'/' + String(element.id));
+    return this.http.delete(this.baseUrl + '/' + String(element.id));
   }
 
   public putData(element: T) {

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ModalBranchComponent } from './modal-branch.component';
+import {ModalBranchComponent} from './modal-branch.component';
 
 describe('ModalBranchComponent', () => {
   let component: ModalBranchComponent;
@@ -8,9 +8,9 @@ describe('ModalBranchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalBranchComponent ]
+      declarations: [ModalBranchComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

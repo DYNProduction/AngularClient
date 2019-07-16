@@ -1,10 +1,10 @@
 import {EntityId} from './EntityId';
 import {OnInit} from '@angular/core';
 import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
-import {HttpService} from './http.service';
-import {ModalTariffComponent} from './tariff/modal-tariff/modal-tariff.component';
-import {DeleteComponent} from './delete/delete.component';
-import {Contract} from './model/contract';
+import {HttpService} from '../service/http.service';
+import {ModalTariffComponent} from '../modals/modal-tariff/modal-tariff.component';
+import {DeleteComponent} from '../delete/delete.component';
+import {Contract} from './contract';
 
 
 export class EntittyRequest<T extends EntityId> implements OnInit {
@@ -14,7 +14,7 @@ export class EntittyRequest<T extends EntityId> implements OnInit {
   constructor(private httpService: HttpService<T>) {
   }
 
-  elementRequest(modelRef: NgbModalRef, oldElement:T = null) {
+  elementRequest(modelRef: NgbModalRef, oldElement: T = null) {
     modelRef.result.then(result => {
       if (result instanceof Object) {
         this.submit(result, oldElement);
@@ -27,8 +27,8 @@ export class EntittyRequest<T extends EntityId> implements OnInit {
   getAll() {
     this.httpService
       .getData()
-      .subscribe(data => this.elements = <T[]> data,
-      error => console.log(error));
+      .subscribe(data => this.elements = <T[]>data,
+        error => console.log(error));
   }
 
   ngOnInit() {
@@ -43,8 +43,7 @@ export class EntittyRequest<T extends EntityId> implements OnInit {
 
           if (elementById.length === 0) {
             this.elements.push(data);
-          }
-          else{
+          } else {
             Object.assign(oldElement, data);
           }
 
@@ -54,16 +53,16 @@ export class EntittyRequest<T extends EntityId> implements OnInit {
   }
 
   delete(element: T, modalService: NgbModal) {
-    const modelRef=modalService.open(DeleteComponent, { backdrop: "static", centered: true , keyboard:false});
+    const modelRef = modalService.open(DeleteComponent, {backdrop: "static", centered: true, keyboard: false});
 
-    modelRef.result.then((result)=>{
-      if (result){
+    modelRef.result.then((result) => {
+      if (result) {
         this.deleteRequest(element);
       }
     });
   }
 
-  deleteRequest(element : T){
+  deleteRequest(element: T) {
     this.httpService.deleteData(element)
       .subscribe(
         (data: any) => {

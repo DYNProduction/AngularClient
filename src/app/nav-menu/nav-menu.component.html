@@ -8,22 +8,23 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <ng-container *ngIf="menuIsOn">
+    <ng-container>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/branchs">Филиалы</a>
+          <a class="nav-link" routerLink="db/branchs">Филиалы</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contracts">Договора</a>
+          <a class="nav-link" routerLink="db/contracts">Договора</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/tariffs">Тарифы</a>
+          <a class="nav-link" routerLink="db/tariffs">Тарифы</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/agents">Агенты</a>
+          <a class="nav-link" routerLink="db/agents">Агенты</a>
         </li>
       </ul>
     </ng-container>
+    <a href="/logout"><button href="/logout" mdbBtn class="btn btn-dark" size="sm" >Выход </button></a>
   </div>
 </nav>
 
