@@ -1,6 +1,4 @@
-import { Component, OnInit} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {url} from 'inspector';
+import {Component, Input, OnInit} from '@angular/core';
 
 
 @Component({
@@ -10,5 +8,6 @@ import {url} from 'inspector';
 
 export class AppComponent {
 
+  menuIsOn:boolean=false;
 }
 

@@ -8,23 +8,22 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/branchs">Филиалы</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/contracts">Договора</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/tariffs">Тарифы</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/agents">Агенты</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/users" tabindex="-1" aria-disabled="true">Пользователи</a>
-      </li>
-    </ul>
+    <ng-container *ngIf="menuIsOn">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/branchs">Филиалы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contracts">Договора</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/tariffs">Тарифы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/agents">Агенты</a>
+        </li>
+      </ul>
+    </ng-container>
   </div>
 </nav>
 

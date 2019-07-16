@@ -1,4 +1,4 @@
-import {EntityId} from '../../EntityId';
+import {EntityId} from '../EntityId';
 
 export class Agent extends EntityId{
   fullName:string;

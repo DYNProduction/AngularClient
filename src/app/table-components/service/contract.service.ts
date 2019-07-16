@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '../http.service';
-import {Contract} from './contract';
 import {HttpClient} from '@angular/common/http';
+import {Contract} from '../model/contract';
+import {Observable} from 'rxjs';
 
 
 @Injectable()

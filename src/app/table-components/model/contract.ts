@@ -1,8 +1,7 @@
 import {EntityId} from '../EntityId';
-import {Agent} from '../agent/modal-agent/agent';
-import {Branch} from '../branch/branch';
-import {Tariff} from '../tariff/tariff';
-import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {Agent} from './agent';
+import {Branch} from './branch';
+import {Tariff} from './tariff';
 
 
 export class Contract extends EntityId{

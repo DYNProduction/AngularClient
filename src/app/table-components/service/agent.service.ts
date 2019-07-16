@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpService} from '../../http.service';
-import {Agent} from './agent';
+import {HttpService} from '../http.service';
+import {Agent} from '../model/agent';
 import {HttpClient} from '@angular/common/http';
 
 

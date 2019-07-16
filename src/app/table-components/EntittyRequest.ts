@@ -1,33 +1,33 @@
 import {EntityId} from './EntityId';
-import {User} from './user-database/user';
 import {OnInit} from '@angular/core';
-import {UserService} from './user-database/user.service';
 import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
-import {ModalUserComponent} from './user-database/modal-user/modal-user.component';
 import {HttpService} from './http.service';
-import {element} from 'protractor';
+import {ModalTariffComponent} from './tariff/modal-tariff/modal-tariff.component';
+import {DeleteComponent} from './delete/delete.component';
+import {Contract} from './model/contract';
 
 
-export class EntittyRequest<T extends EntityId> implements OnInit{
+export class EntittyRequest<T extends EntityId> implements OnInit {
 
   elements: T[] = [];
 
   constructor(private httpService: HttpService<T>) {
   }
 
-  elementRequest(modelRef:NgbModalRef){
-    modelRef.result.then(result=>{
-      if (result instanceof Object){
-        this.submit(result);
-      }
-      else {
+  elementRequest(modelRef: NgbModalRef, oldElement:T = null) {
+    modelRef.result.then(result => {
+      if (result instanceof Object) {
+        this.submit(result, oldElement);
+      } else {
         console.log(result.toString());
       }
     });
   }
 
-  getAll(){
-    this.httpService.getData().subscribe(data => this.elements = <T[]> data,
+  getAll() {
+    this.httpService
+      .getData()
+      .subscribe(data => this.elements = <T[]> data,
       error => console.log(error));
   }
 
@@ -35,14 +35,17 @@ export class EntittyRequest<T extends EntityId> implements OnInit{
     this.getAll();
   }
 
-  submit(element: T , oldElement: T = null) {
+  submit(element: T, oldElement: T = null) {
     this.httpService.postData(element)
       .subscribe(
         (data: T) => {
-          let elementById=this.elements.filter(element=>element.id===data.id);
+          let elementById = this.elements.filter(element => element.id === data.id);
 
-          if (elementById.length===0) {
+          if (elementById.length === 0) {
             this.elements.push(data);
+          }
+          else{
+            Object.assign(oldElement, data);
           }
 
         },
@@ -50,31 +53,27 @@ export class EntittyRequest<T extends EntityId> implements OnInit{
       );
   }
 
-  delete(element: T) {
-    if (confirm("Удалить элемент с id: "+element.id)) {
-      this.httpService.deleteData(element)
-        .subscribe(
-          (data: any) => {
-            this.deleteById(element);
-          }
-        );
-    }
+  delete(element: T, modalService: NgbModal) {
+    const modelRef=modalService.open(DeleteComponent, { backdrop: "static", centered: true , keyboard:false});
+
+    modelRef.result.then((result)=>{
+      if (result){
+        this.deleteRequest(element);
+      }
+    });
   }
 
-  index:number;
-  newArray:T[]=[];
+  deleteRequest(element : T){
+    this.httpService.deleteData(element)
+      .subscribe(
+        (data: any) => {
+          this.deleteById(element);
+        }
+      );
+  }
 
-  deleteById(element:T){
-    this.index=0;
 
-    while(this.index<this.elements.length) {
-      if (element.id!=this.elements[this.index].id) {
-        this.newArray.push(this.elements[this.index]);
-      }
-      this.index++;
-    }
-
-    this.elements=this.newArray;
-
+  deleteById(element: T) {
+    this.elements = this.elements.filter(obj => obj.id != element.id);
   }
 }

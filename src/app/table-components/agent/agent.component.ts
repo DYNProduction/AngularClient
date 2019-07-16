@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {EntityId} from '../EntityId';
 import {EntittyRequest} from '../EntittyRequest';
-import {Agent} from './modal-agent/agent';
-import {AgentService} from './modal-agent/agent.service';
+import {Agent} from '../model/agent';
+import {AgentService} from '../service/agent.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalAgentComponent} from './modal-agent/modal-agent.component';
 
@@ -14,33 +13,33 @@ import {ModalAgentComponent} from './modal-agent/modal-agent.component';
 })
 export class AgentComponent extends EntittyRequest<Agent>{
   columnList : Array<string> =[
-    "Идентификатор",
+    "#",
     "ФИО",
     "Адрес",
     "Номер телефона"
   ];
-
-  modelRef: any;
 
   constructor(private agentService: AgentService,
               private  modalService: NgbModal) {
     super(agentService);
   }
 
-  addUser(){
+  addAgent(){
     const modelRef=this.modalService.open(ModalAgentComponent, { backdrop: "static", centered: true , keyboard:false});
 
     this.elementRequest(modelRef);
   }
 
-  editUser(element : Agent){
-    this.modelRef=this.modalService.open(ModalAgentComponent, { centered: true , keyboard:false});
+  editAgent(element : Agent){
+    const modelRef=this.modalService.open(ModalAgentComponent, { centered: true , keyboard:false});
 
-    this.modelRef.componentInstance.editBranch = element;
+    modelRef.componentInstance.editAgent = Object.assign({}, element);
+
+    this.elementRequest(modelRef, element);
   }
 
   delete(element: Agent) {
-    super.delete(element);
+    super.delete(element,this.modalService);
   }
 
 

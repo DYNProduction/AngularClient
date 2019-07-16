@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Agent} from '../../agent/modal-agent/agent';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Branch} from '../branch';
+import {Branch} from '../../model/branch';
 
 @Component({
   selector: 'app-modal-branch',

@@ -8,12 +8,12 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let element of elements">
-    <th scope="row">{{element.id}}</th>
+  <tr *ngFor="let element of elements; let i = index;">
+    <th scope="row">{{i+1}}</th>
     <td>{{element.codeContract}}</td>
     <td>{{element.insuranceType}}</td>
     <td>{{element.insuranceAmount}}</td>
-    <td>{{element.insuranceDate.toString().substring(0,10)}}</td>
+    <td >{{element.insuranceDate | date: 'dd-MM-yyyy'}}</td>
     <td>{{element.agent.fullName}}</td>
     <td>{{element.branch.name}}</td>
     <td>{{element.tariff.tariffRate}}</td>

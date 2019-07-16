@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {User} from '../../user-database/user';
-import {Agent} from './agent';
+import {Agent} from '../../model/agent';
 
 @Component({
   selector: 'app-modal-agent',

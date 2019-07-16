@@ -1,6 +1,6 @@
 import {HttpService} from '../http.service';
-import {Branch} from './branch';
 import {HttpClient} from '@angular/common/http';
+import {Branch} from '../model/branch';
 
 export class BranchService extends HttpService<Branch>{
   constructor(private httpClient:HttpClient){

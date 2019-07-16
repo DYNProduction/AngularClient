@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '../http.service';
 import {HttpClient} from '@angular/common/http';
-import {Tariff} from './tariff';
+import {Tariff} from '../model/tariff';
 
 @Injectable()
 export class TariffService extends HttpService<Tariff>{

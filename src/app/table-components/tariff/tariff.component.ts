@@ -1,46 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import {UserService} from '../user-database/user.service';
+import {Component} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ModalUserComponent} from '../user-database/modal-user/modal-user.component';
-import {User} from '../user-database/user';
-import {TariffService} from './tariff.service';
+import {TariffService} from '../service/tariff.service';
 import {EntittyRequest} from '../EntittyRequest';
-import {Tariff} from './tariff';
 import {ModalTariffComponent} from './modal-tariff/modal-tariff.component';
+import {Tariff} from '../model/tariff';
 
 @Component({
   selector: 'app-tariff',
   templateUrl: './tariff.component.html',
-  styleUrls: ['./tariff.component.css','../table.button.css'],
-  providers: [TariffService]
+  styleUrls: ['./tariff.component.css', '../table.button.css'],
+  providers: [TariffService, NgbModal]
 })
+
 export class TariffComponent extends EntittyRequest<Tariff>{
   columnList : Array<string> =[
-    "Идентификатор",
+    "#",
     "Тарифная ставка"
   ];
 
-  modelRef: any;
 
-  constructor(private userService: TariffService,
-              private modalService: NgbModal ) {
+  constructor(private userService : TariffService,
+              private modalService : NgbModal ) {
     super(userService);
   }
 
-  addUser(){
+  addTariff(){
     const modelRef=this.modalService.open(ModalTariffComponent, { backdrop: "static", centered: true , keyboard:false});
 
     this.elementRequest(modelRef);
   }
 
-  editUser(tariff : Tariff){
-    this.modelRef=this.modalService.open(ModalTariffComponent, { centered: true , keyboard:false});
+  editTariff(tariff : Tariff){
+    const modelRef = this.modalService.open(ModalTariffComponent, { centered: true , keyboard:false});
 
-    this.modelRef.componentInstance.editTariff = tariff;
+    modelRef.componentInstance.editTariff = Object.assign({}, tariff);
+
+    this.elementRequest(modelRef, tariff);
   }
 
   delete(element: Tariff) {
-    super.delete(element);
+    super.delete(element,this.modalService);
   }
 
 }

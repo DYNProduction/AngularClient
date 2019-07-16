@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {BranchService} from './branch.service';
+import {BranchService} from '../service/branch.service';
 import {EntittyRequest} from '../EntittyRequest';
-import {Branch} from './branch';
-import {AgentService} from '../agent/modal-agent/agent.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ModalAgentComponent} from '../agent/modal-agent/modal-agent.component';
-import {Agent} from '../agent/modal-agent/agent';
 import {ModalBranchComponent} from './modal-branch/modal-branch.component';
+import {Branch} from '../model/branch';
 
 @Component({
   selector: 'app-branch',
@@ -16,36 +13,34 @@ import {ModalBranchComponent} from './modal-branch/modal-branch.component';
 })
 export class BranchComponent extends EntittyRequest<Branch>{
   columnList : Array<string> =[
-    "Идентификатор",
+    "#",
     "Код филиала",
     "Название филиала",
     "Адрес",
     "Номер телефона"
   ];
 
-  modelRef: any;
-
   constructor(private agentService: BranchService,
               private  modalService: NgbModal) {
     super(agentService);
   }
 
-  addUser(){
+  addBranch(){
     const modelRef=this.modalService.open(ModalBranchComponent, { backdrop: "static", centered: true , keyboard:false});
 
     this.elementRequest(modelRef);
   }
 
-  editUser(element : Branch){
+  editBranch(element : Branch){
     const modelRef=this.modalService.open(ModalBranchComponent, {backdrop: "static",  centered: true , keyboard:false});
 
-    modelRef.componentInstance.editBranch = element;
+    modelRef.componentInstance.editBranch = Object.assign({}, element);
 
-    this.elementRequest(modelRef);
+    this.elementRequest(modelRef, element);
   }
 
   delete(element: Branch) {
-    super.delete(element);
+    super.delete(element, this.modalService);
   }
 
 

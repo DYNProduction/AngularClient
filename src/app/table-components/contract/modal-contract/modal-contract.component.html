@@ -1,6 +1,6 @@
 <div>
   <div class="modal-header">
-    <h4 class="modal-title">Контракт</h4>
+    <h4 class="modal-title">Договор</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -11,20 +11,22 @@
       <div class="form-group">
         <label>Код контракта</label>
         <input class="form-control" [(ngModel)]="editContract.codeContract" [ngModelOptions]="{standalone: true}"
-               />
+        />
       </div>
+      <hr/>
       <div class="form-group">
         <label>Тип страхования</label>
         <input class="form-control" [(ngModel)]="editContract.insuranceType" [ngModelOptions]="{standalone: true}"
-               />
+        />
       </div>
+      <hr/>
       <div class="form-group">
         <label>Сумма страхования</label>
         <input class="form-control" [(ngModel)]="editContract.insuranceAmount" [ngModelOptions]="{standalone: true}"
-               />
+        />
       </div>
 
-
+      <hr/>
 
       <label>Дата страхования</label>
       <div class="row">
@@ -32,8 +34,9 @@
           <form class="form-inline">
             <div class="form-group">
               <div class="input-group">
-                <input class="form-control" placeholder="yyyy-mm-dd" [ngModelOptions]="{standalone: true}"
-                       name="d2" #c2="ngModel" [(ngModel)]="editContract.insuranceDate" ngbDatepicker #d2="ngbDatepicker">
+                <input class="form-control"
+                       name="d2" [(ngModel)]="editContract.insuranceDate"
+                       ngbDatepicker #d2="ngbDatepicker">
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
                 </div>
@@ -43,6 +46,7 @@
 
           <hr/>
           <button class="btn btn-sm btn-outline-primary" (click)="editContract.insuranceDate = today">Сегодня</button>
+
           <hr/>
         </div>
       </div>
@@ -53,7 +57,11 @@
         <div class="input-group">
           <form class="form-inline">
             <select class="custom-select" [(ngModel)]="editContract.agent" [ngModelOptions]="{standalone: true}">
-              <option select *ngFor="let el of listAgent" [ngValue]="el">{{el.fullName}}</option>
+              <option selected *ngIf="editContract.agent.id!=null"
+                      [ngValue]="editContract.agent">{{editContract.agent.fullName}}</option>
+              <ng-container *ngFor="let el of listAgent">
+                <option select *ngIf="editContract.agent.id!=el.id" [ngValue]="el">{{el.fullName}}</option>
+              </ng-container>
             </select>
           </form>
         </div>
@@ -63,8 +71,13 @@
         <label>Тарифная ставка</label>
         <div class="input-group">
           <form class="form-inline">
-            <select class="custom-select custom-select-sm"  [(ngModel)]="editContract.tariff" [ngModelOptions]="{standalone: true}">
-              <option select *ngFor="let el of listTariff" [ngValue]="el">{{el.tariffRate}}</option>
+            <select class="custom-select custom-select-sm" [(ngModel)]="editContract.tariff"
+                    [ngModelOptions]="{standalone: true}">
+              <option selected *ngIf="editContract.tariff.id!=null"
+                      [ngValue]="editContract.tariff"> {{editContract.tariff.tariffRate}}</option>
+              <ng-container *ngFor="let el of listTariff">
+                <option select *ngIf="editContract.tariff.id!=el.id" [ngValue]="el">{{el.tariffRate}}</option>
+              </ng-container>
             </select>
           </form>
         </div>
@@ -75,7 +88,11 @@
         <div class="input-group">
           <form class="form-inline">
             <select class="custom-select" [(ngModel)]="editContract.branch" [ngModelOptions]="{standalone: true}">
-              <option  select  *ngFor="let el of listBranch" [ngValue]="el"  >{{el.name}}</option>
+              <option selected *ngIf="editContract.branch.id!=null"
+                      [ngValue]="editContract.branch">{{editContract.branch.name}}</option>
+              <ng-container *ngFor="let el of listBranch">
+                <option select *ngIf="editContract.branch.id!=el.id" [ngValue]="el">{{el.name}}</option>
+              </ng-container>
             </select>
           </form>
         </div>
