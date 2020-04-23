@@ -1,10 +1,10 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {Injectable, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
-import {HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {NavMenuComponent} from './nav-menu/nav-menu.component';
 
 import {RouterModule} from '@angular/router';
@@ -20,6 +20,9 @@ import {ModalAgentComponent} from './modals/modal-agent/modal-agent.component';
 import {ModalBranchComponent} from './modals/modal-branch/modal-branch.component';
 import {ModalContractComponent} from './modals/modal-contract/modal-contract.component';
 import {DeleteComponent} from './delete/delete.component';
+import {AgentService} from './service/agent.service';
+import {BranchService} from './service/branch.service';
+import {TariffService} from './service/tariff.service';
 
 
 @NgModule({
@@ -57,7 +60,7 @@ import {DeleteComponent} from './delete/delete.component';
     DeleteComponent
   ],
 
-  providers: [EntittyRequest],
+  providers: [EntittyRequest, AgentService, BranchService, TariffService],
   bootstrap: [AppComponent, NavMenuComponent]
 
 })

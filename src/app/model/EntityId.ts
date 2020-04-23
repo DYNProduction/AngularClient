@@ -1,3 +1,3 @@
 export class EntityId {
-  id: Number;
+  id: number;
 }

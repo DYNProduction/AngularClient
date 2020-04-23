@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AgentService} from '../../service/agent.service';
-import {NgbDateStruct, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Agent} from '../../model/agent';
 import {ContractService} from '../../service/contract.service';
 import {EntittyRequest} from '../../model/EntittyRequest';
@@ -39,19 +39,47 @@ export class ContractComponent extends EntittyRequest<Contract> {
               private  modalService: NgbModal) {
     super(contractService);
 
+    this.listAgent.push(new Agent('Куликовский Кабутар Святославович', '195248, г. Гатчина, ул. Магистральный 1-й проезд, дом 71, квартира 51', '+7 (962) 479-90-61'));
+    this.listAgent.push(new Agent('Анисимова Кадерли Романовна', '399531, г. Орск, ул. Сиреневая, дом 11, квартира 343', '+7 (957) 334-47-80'));
+    this.listAgent.push(new Agent('Журавель Басман Филиппович', '198217, г. Кольчугино, ул. 1905 года, дом 10, квартира 167', '+7 (950) 681-81-24'));
+    this.listBranchs.push(new Branch(131234, 'Восточный', '152062, г. Верх-Усугли, ул. Новомихалковский 3-й проезд, дом 51, квартира 485', '+7 (970) 165-78-30'));
+    this.listBranchs.push(new Branch(234562, 'Северный', '603096, г. Тольятти, ул. Автозаводский 3-й проезд, дом 39, квартира 313', '+7 (927) 899-26-79'));
+    this.listBranchs.push(new Branch(432652, 'Восточный', '442571, г. Ключи, ул. Стахановская, дом 80, квартира 328', '+7 (990) 473-46-59'));
+    this.listTariff.push(new Tariff(25));
+    this.listTariff.push(new Tariff(40));
+    this.listTariff.push(new Tariff(50));
+    this.elements.push(new Contract(
+      123123,
+      'Процентный',
+      25,
+      new Date(),
+      this.listAgent[1],
+      this.listBranchs[1],
+      this.listTariff[1]
+    ));
+    this.elements.push(new Contract(
+      1212354,
+      'Беспроцентный>',
+      12,
+      new Date(),
+      this.listAgent[2],
+      this.listBranchs[0],
+      this.listTariff[1]
+    ));
+    this.elements.push(new Contract(
+      1872364,
+      'Вечный',
+      12353,
+      new Date(),
+      this.listAgent[0],
+      this.listBranchs[1],
+      this.listTariff[2]
+    ));
   }
 
   ngOnInit() {
     this.getAll();
 
-    this.agentService.getData().subscribe(data => this.listAgent = <Agent[]>data,
-      error => console.log(error));
-
-    this.branchService.getData().subscribe(data => this.listBranchs = <Branch[]>data,
-      error => console.log(error));
-
-    this.tariffService.getData().subscribe(data => this.listTariff = <Tariff[]>data,
-      error => console.log(error));
   }
 
   listAgent: Agent[] = [];

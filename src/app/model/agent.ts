@@ -5,11 +5,13 @@ export class Agent extends EntityId {
   address: string;
   number: string;
 
-  constructor() {
+  constructor(fullName: string,
+              address: string,
+              number: string) {
     super();
-    this.fullName = "";
-    this.address = "";
-    this.number = "";
+    this.fullName = fullName;
+    this.address = address;
+    this.number = number;
   }
 
 }

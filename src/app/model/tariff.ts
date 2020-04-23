@@ -3,8 +3,8 @@ import {EntityId} from './EntityId';
 export class Tariff extends EntityId {
   tariffRate: number;
 
-  constructor() {
+  constructor(tarriff: number) {
     super();
-    this.tariffRate = 0;
+    this.tariffRate = tarriff;
   }
 }

@@ -5,6 +5,7 @@ import {Tariff} from '../model/tariff';
 
 @Injectable()
 export class TariffService extends HttpService<Tariff> {
+  elements: Tariff[];
 
   constructor(private client: HttpClient) {
     super(client);

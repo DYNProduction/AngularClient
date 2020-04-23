@@ -5,6 +5,7 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class BranchService extends HttpService<Branch> {
+  elements: Branch[];
   constructor(private httpClient: HttpClient) {
     super(httpClient);
     this.setBaseUrl("/branchs")

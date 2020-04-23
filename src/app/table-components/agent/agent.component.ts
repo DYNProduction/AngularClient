@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {EntittyRequest} from '../../model/EntittyRequest';
 import {Agent} from '../../model/agent';
 import {AgentService} from '../../service/agent.service';
@@ -23,12 +23,22 @@ export class AgentComponent extends EntittyRequest<Agent> {
   constructor(private agentService: AgentService,
               private  modalService: NgbModal) {
     super(agentService);
+    this.elements.push(new Agent('Куликовский Кабутар Святославович', '195248, г. Гатчина, ул. Магистральный 1-й проезд, дом 71, квартира 51', '+7 (962) 479-90-61'));
+    this.elements.push(new Agent('Анисимова Кадерли Романовна', '399531, г. Орск, ул. Сиреневая, дом 11, квартира 343', '+7 (957) 334-47-80'));
+    this.elements.push(new Agent('Журавель Басман Филиппович', '198217, г. Кольчугино, ул. 1905 года, дом 10, квартира 167', '+7 (950) 681-81-24'));
+    this.agentService.elements = this.elements;
   }
 
   addAgent() {
-    const modelRef = this.modalService.open(ModalAgentComponent, {backdrop: "static", centered: true, keyboard: false});
+    const modelRef = this.modalService.open(ModalAgentComponent, {backdrop: 'static', centered: true, keyboard: false});
 
-    this.elementRequest(modelRef);
+    modelRef.result.then(result => {
+      if (result instanceof Object) {
+        this.elements.push(result);
+      } else {
+        console.log(result.toString());
+      }
+    });
   }
 
   editAgent(element: Agent) {
@@ -40,6 +50,7 @@ export class AgentComponent extends EntittyRequest<Agent> {
   }
 
   delete(element: Agent) {
+    this.elements = this.elements.filter((el) => el !== element);
     super.delete(element, this.modalService);
   }
 

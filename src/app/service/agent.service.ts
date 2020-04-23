@@ -6,6 +6,7 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class AgentService extends HttpService<Agent> {
+  elements: Agent[];
 
   constructor(private httpClient: HttpClient) {
     super(httpClient);

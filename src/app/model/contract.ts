@@ -13,14 +13,20 @@ export class Contract extends EntityId {
   branch: Branch;
   tariff: Tariff;
 
-  constructor() {
+  constructor(codeContract: number,
+              insuranceType: string,
+              insuranceAmount: number,
+              insuranceDate: Date,
+              agent: Agent,
+              branch: Branch,
+              tariff: Tariff) {
     super();
-    this.codeContract = 0;
-    this.insuranceType = "";
-    this.insuranceAmount = 0;
-    this.insuranceDate = new Date();
-    this.tariff = new Tariff();
-    this.branch = new Branch();
-    this.agent = new Agent();
+    this.codeContract = codeContract;
+    this.insuranceAmount = insuranceAmount;
+    this.insuranceType = insuranceType;
+    this.insuranceDate = insuranceDate;
+    this.agent = agent;
+    this.branch = branch;
+    this.tariff = tariff;
   }
 }

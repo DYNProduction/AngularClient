@@ -6,11 +6,14 @@ export class Branch extends EntityId {
   address: string;
   number: string;
 
-  constructor() {
+  constructor(codeBranch: number,
+              name: string,
+              address: string,
+              number: string) {
     super();
-    this.codeBranch = 0;
-    this.name = "";
-    this.address = "";
-    this.number = "";
+    this.codeBranch = codeBranch;
+    this.name = name;
+    this.address = address;
+    this.number = number;
   }
 }

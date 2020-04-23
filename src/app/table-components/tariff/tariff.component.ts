@@ -22,6 +22,10 @@ export class TariffComponent extends EntittyRequest<Tariff> {
   constructor(private userService: TariffService,
               private modalService: NgbModal) {
     super(userService);
+    this.elements.push(new Tariff(25));
+    this.elements.push(new Tariff(40));
+    this.elements.push(new Tariff(50));
+    this.userService.elements = this.elements;
   }
 
   addTariff() {

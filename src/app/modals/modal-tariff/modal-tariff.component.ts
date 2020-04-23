@@ -11,7 +11,7 @@ import {Tariff} from '../../model/tariff';
 export class ModalTariffComponent {
 
   @Input()
-  editTariff: Tariff = new Tariff();
+  editTariff: Tariff = new Tariff(25);
 
   constructor(private modalService: NgbModal,
               private modal: NgbActiveModal) {
